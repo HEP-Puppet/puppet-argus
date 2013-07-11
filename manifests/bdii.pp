@@ -1,4 +1,4 @@
-class argus::bdii inherits params {
+class argus::bdii inherits argus::params {
   #
   # setup the service provider for bdii on Argus
   # 

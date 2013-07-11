@@ -1,4 +1,4 @@
-class argus::nfs inherits params {
+class argus::nfs inherits argus::params {
   
   package{['nfs-utils']:
     ensure => present,

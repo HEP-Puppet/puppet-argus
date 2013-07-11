@@ -1,4 +1,4 @@
-class argus::firewall inherits params{
+class argus::firewall inherits argus::params{
 
   firewall { '101 allow argus pap':
     proto  => 'tcp',

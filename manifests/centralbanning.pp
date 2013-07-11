@@ -1,4 +1,4 @@
-class argus::centralbanning inherits params {
+class argus::centralbanning inherits argus::params {
   
   if $centralbanning_enabled {
     concat::fragment{"pap_configuration.centralbanning.ini": 

@@ -1,4 +1,4 @@
-class argus::config inherits params {
+class argus::config inherits argus::params {
   
   #
   # configuration files
