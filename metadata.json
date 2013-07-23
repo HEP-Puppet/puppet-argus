@@ -1,0 +1,70 @@
+{
+  "name": "heppuppet-argus",
+  "author": "schwicke",
+  "description": "This modules provides classes and definitions required to setup an Argus server instance.",
+  "license": "Apache License, Version 2.0 (the \"License\")",
+  "project_page": "http://www.eu-emi.eu/",
+  "source": "",
+  "summary": "EMI Argus service",
+  "version": "0.0.1",
+  "checksums": {
+    "CHANGELOG": "de6efe02f8464a455be565a7f48b79f8",
+    "LICENSE": "5828b43b565baeeff8aa4aeb1591e053",
+    "Modulefile": "05768e9ea8b5917ec7ed5cd98042a514",
+    "README": "f241a8ecca670d4c21d4e80599191dbd",
+    "lib/puppet/parser/functions/randompass.rb": "7eddb13eb9f8802297d1ff704091dabd",
+    "manifests/bdii.pp": "a3944d1a1b6820c107b33a60802748ec",
+    "manifests/centralbanning.pp": "3a84938f7c7ea1ffaeb961d307e856b7",
+    "manifests/config.pp": "11cf140f3ef9f6e295a0835f6ce83960",
+    "manifests/firewall.pp": "f71c18d10507b44e48a02a35a57f4844",
+    "manifests/init.pp": "66f5d4d668c75d8d9e2c8d705ed5a132",
+    "manifests/install.pp": "e1fc7c07c56e1c833c8d9dc8c88da4d6",
+    "manifests/lemon.pp": "47ef744c562a242897bd77b3e827d7f4",
+    "manifests/nfs.pp": "b7b15dd9d347e55e3bff3adf17182f87",
+    "manifests/params.pp": "1e76744c2faa16b1e77e7022b3702ffc",
+    "manifests/rules_banning.pp": "791ed370f4891c96c10a53dfe37fe6ea",
+    "manifests/service.pp": "0e4fe1929b652ac3167b042b880ffa83",
+    "manifests/servicecert.pp": "b3e7fdcd151d1b0c53a830021a25b9cf",
+    "spec/spec_helper.rb": "a55d1e6483344f8ec6963fcb2c220372",
+    "templates/centralbanning.erb": "0a50316bd1188d5b2ba4be718fd3fd0d",
+    "templates/glite-info-glue2-argus-pap.conf.erb": "7dbdd7b7d084b2e09d5d81aa5ba0c49b",
+    "templates/glite-info-glue2-argus-pdp.conf.erb": "e11cd39b5fa5446420c4454fe24bc996",
+    "templates/glite-info-glue2-argus-pep.conf.erb": "0e62058160d03ccc724bbb0f6ae4a775",
+    "templates/glite-info-glue2-provider-service-argus.erb": "1b286dac15ca3caf8390dc87b984b6b3",
+    "templates/glite-info-glue2-service-argus.conf.erb": "0e8167ba8cea3e1c264a660679ef8581",
+    "templates/pap-admin.properties.erb": "a2cef6e04a908158b12a1079f2af064c",
+    "templates/pap_authorization.ini.erb": "dde48b0bce65064cd3f32dda5ecc4308",
+    "templates/pap_configuration.ini.centralbanning.erb": "0d9126442ac2c2efddff6ce6ad338c2a",
+    "templates/pap_configuration.ini.default.erb": "906a038afd13b62300cce7a161efc98c",
+    "templates/pap_configuration.ini.erb": "c29639389864b8cada8afe0419b9fad7",
+    "templates/pdp.ini.erb": "1dac27385cd2b73b9c2204964075c580",
+    "templates/pepd.ini.erb": "65dc3524742cd8ce170e13f81edb2d06",
+    "templates/policies_centralbanning.erb": "ca9a130468458054f6bc51907596f3d4"
+  },
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": "\u003e\u003d4.1.0"
+    },
+    {
+      "name": "ripienaar/concat",
+      "version_requirement": "\u003e\u003d0.2.0"
+    },
+    {
+      "name": "puppetlabs/firewall",
+      "version_requirement": "\u003e\u003d0.3.1"
+    },
+    {
+      "name": "heppuppet/vosupport",
+      "version_requirement": "\u003e\u003d0.0.1"
+    },
+    {
+      "name": "heppuppet/lemon",
+      "version_requirement": "\u003e\u003d0.0.1"
+    },
+    {
+      "name": "pdxcat/autofs",
+      "version_requirement": "\u003e\u003d0.0.2"
+    }
+  ]
+}
