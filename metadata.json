@@ -11,7 +11,7 @@
     "CHANGELOG": "de6efe02f8464a455be565a7f48b79f8",
     "LICENSE": "5828b43b565baeeff8aa4aeb1591e053",
     "Modulefile": "05768e9ea8b5917ec7ed5cd98042a514",
-    "README": "f241a8ecca670d4c21d4e80599191dbd",
+    "README": "5a5a14fea6301349e0ade4a7d55cc89b",
     "lib/puppet/parser/functions/randompass.rb": "7eddb13eb9f8802297d1ff704091dabd",
     "manifests/bdii.pp": "a3944d1a1b6820c107b33a60802748ec",
     "manifests/centralbanning.pp": "3a84938f7c7ea1ffaeb961d307e856b7",
