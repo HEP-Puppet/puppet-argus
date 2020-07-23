@@ -1,0 +1,39 @@
+---
+argus::pkg_meta: argus-authz
+argus::argus_version: 1.7
+
+argus::pkg_ensure: present
+
+argus::supported_vos:
+  - ops
+
+#global argus shutdown password. If set, it will replace the various args*_pass
+argus::secret_pass: undef
+
+# pep params
+argus::pepd_port: 8154
+argus::pepd_admin_port: 8155
+argus::pep_server: "%{::fqdn}"
+
+# pdp params
+argus::pdps_port: 8152
+argus::pdp_port: 8152
+argus::pdp_admin_port: 8153
+argus::pdp_server: "%{::fqdn}"
+
+# pap parameters
+argus::pap_port: 8150
+argus::pap_shutdown_port: 8151
+argus::pap_server: "%{::fqdn}"
+
+# central banning setup
+argus::centralbanning_dn: ""
+argus::centralbanning_hostname: ""
+argus::centralbanning_port: 8150
+argus::poll_interval: 14400
+argus::centralbanning_public: false
+
+#files
+argus::grid_mapfile: /etc/grid-security/grid-mapfile
+argus::grid_mapdir: /etc/grid-security/gridmapdir
+argus::group_mapfile: /etc/grid-security/groupmapfile

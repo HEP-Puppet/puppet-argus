@@ -1,12 +1,15 @@
+#
+# file managed by puppet, do not edit manually
+#
 [paps]
 centralbanning.type = remote
-centralbanning.enabled = <%=centralbanning_enabled%>
-centralbanning.dn = <%=centralbanning_dn%>
-centralbanning.hostname = <%=centralbanning_hostname%>
-centralbanning.port = <%=centralbanning_port%>
+centralbanning.enabled = <%= scope['argus::centralbanning_hostname'] ? "true" : "false" %>
+centralbanning.dn = <%= scope['argus::centralbanning_dn']%>
+centralbanning.hostname = <%= scope['argus::centralbanning_hostname']%>
+centralbanning.port = <%= scope['argus::centralbanning_port']%>
 centralbanning.path = /pap/services/
 centralbanning.protocol = https
-centralbanning.public = false
+centralbanning.public = <%= scope['argus::centralbanning_public'] ? "true" : "false" %>
 
 [paps:properties]
 poll_interval = 14400

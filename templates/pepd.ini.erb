@@ -1,20 +1,23 @@
 #
+# file managed by puppet, do not edit manually
+#
+#
 # Argus PEP Server configuration
 #
 # Documentation: https://twiki.cern.ch/twiki/bin/view/EGEE/AuthZPEPDConfig
 # 
 [SERVICE]
-entityId  = http://<%=service_name%>/pepd
-hostname  = <%=fqdn%>
-port      = <%=pepd_port%>
-adminPort = <%=pepd_admin_port%>
-adminPassword = <%=pepd_pass%>
+entityId  = http://<%= scope['argus::service_name']%>/pepd
+hostname  = <%= @fqdn %>
+port      = <%= scope['argus::pepd_port']%>
+adminPort = <%= scope['argus::pepd_admin_port']%>
+adminPassword = <%= scope['argus::secret_pass'] rescue scope['argus::pepd_pass']%>
 
 pips = REQVALIDATOR_PIP OPENSSLSUBJECT_PIP GLITEXACMLPROFILE_PIP COMMONXACMLPROFILE_PIP
 obligationHandlers = ACCOUNTMAPPER_OH
 
 [PDP]
-pdps = https://<%=fqdn%>:<%=pdps_port%>/authz
+pdps = https://<%= scope['argus::pdp_server'] -%>:<%= scope['argus::pdps_port']%>/authz
 maximumCachedResponses = 0 
 
 [SECURITY]
@@ -22,9 +25,9 @@ servicePrivateKey = /etc/grid-security/hostkey.pem
 serviceCertificate = /etc/grid-security/hostcert.pem
 trustInfoDir = /etc/grid-security/certificates/
 enableSSL = true
-#requireClientCertAuthentication = true
-# fixme : temporarily for WMS
-requireClientCertAuthentication = false 
+requireClientCertAuthentication = true
+# was : fixme : temporarily for WMS
+# requireClientCertAuthentication = false 
 
 #
 # Policy Information Points (PIP) configuration
@@ -57,8 +60,8 @@ acceptedProfileIDs = http://dci-sec.org/xacml/profile/common-authz/1.1
 [ACCOUNTMAPPER_OH]
 parserClass = org.glite.authz.pep.obligation.dfpmap.DFPMObligationHandlerConfigurationParser
 handledObligationId = http://glite.org/xacml/obligation/local-environment-map
-accountMapFile = /etc/grid-security/grid-mapfile 
-groupMapFile = /etc/grid-security/groupmapfile
-gridMapDir = /etc/grid-security/gridmapdir
+accountMapFile = <%= scope['argus::grid_mapfile']%>
+groupMapFile = <%= scope['argus::group_mapfile']%>
+gridMapDir = <%= scope['argus::grid_mapdir']%>
 useSecondaryGroupNamesForMapping = true
 

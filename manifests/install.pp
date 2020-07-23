@@ -1,8 +1,6 @@
 class argus::install {
-  package {emi-argus:
-    ensure => present,
+  package { $::argus::pkg_meta :
+    ensure => $::argus::pkg_ensure,
+    tag => 'argus',
   }
-  package { selinux-policy-targeted-emi2-gridmapdir:
-    ensure => present,
-  }   
 }

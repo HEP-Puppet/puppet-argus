@@ -4,20 +4,22 @@ class argus::service {
     hasstatus => true,
     hasrestart => true,
     enable => true,
-    require => [Class['argus::config'],Class['argus::install']]
+    tag => 'argus',
   }
+  ->
   service{'argus-pdp':
     ensure => running,
     hasstatus => true,
     hasrestart => true,
     enable => true,
-    require => [Class['argus::config'],Class['argus::install']]
+    tag => 'argus',
   }
+  ->
   service{'argus-pepd':
     ensure => running,
     hasstatus => true,
     hasrestart => true,
     enable => true,
-    require => [Class['argus::config'],Class['argus::install']]
+    tag => 'argus',
   }
 }

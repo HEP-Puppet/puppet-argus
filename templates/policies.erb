@@ -1,0 +1,28 @@
+resource ".*" {
+<%- if (scope['argus::supported_vos_allowed']) -%>
+  obligation "http://glite.org/xacml/obligation/local-environment-map" {
+  }
+<% end -%>
+  
+  action ".*" {
+
+<%- unless (scope['argus::pap_rules'].nil?) -%>
+<%- if (scope['argus::pap_rules'].is_a? Hash) -%>
+    <%- scope['argus::pap_rules'].sort.each do |action, attributeH|-%>
+      <%- attributeH.sort.each do |attribute,dn_a| -%>
+        <%- dn_a.sort.each do |dn| -%>
+        rule <%= action -%> { <%= attribute %> = <%=dn%> }
+        <%- end -%>
+      <%- end -%> 
+    <%end-%>
+<%end -%>
+<%end -%>
+    
+    <%-# and now, generate an allow rule for each VO after the denies %>
+    <%- if (scope['argus::supported_vos_allowed']) -%>
+      <%-scope['argus::supported_vos'].sort.each do |vo| -%>
+        rule permit { vo = "<%= vo -%>" }
+      <%- end -%>
+    <%- end -%>
+  }
+}

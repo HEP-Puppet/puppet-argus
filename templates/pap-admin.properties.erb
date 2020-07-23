@@ -5,5 +5,8 @@
 # 
 # Documentation: https://twiki.cern.ch/twiki/bin/view/EGEE/AuthZPAPConfig
 #
-host=localhost
-port=<%=pap_port%>
+#
+# file managed by puppet, do not edit manually
+#
+host=<%= @fqdn %>
+port=<%= scope['argus::pap_port'] %>
