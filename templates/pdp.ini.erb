@@ -15,7 +15,7 @@ adminPassword = <%= scope['argus::secret_pass'] rescue scope['argus::pdp_pass']%
 
 [POLICY]
 paps = https://<%= scope['argus::pap_server'] -%>:8150/pap/services/ProvisioningService
-retentionInterval = 240
+retentionInterval = <%= scope['argus::pdp_retention_interval'] -%>
 
 [SECURITY]
 servicePrivateKey = /etc/grid-security/hostkey.pem

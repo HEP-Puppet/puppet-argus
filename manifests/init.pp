@@ -53,6 +53,7 @@ class argus (
   $pdp_port,
   $pdp_admin_port,
   $pdp_pass = randompass(),
+  $pdp_retention_interval,
 
   # pap parameters
   $pap_port,

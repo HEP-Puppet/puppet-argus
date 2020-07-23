@@ -20,6 +20,7 @@ argus::pdps_port: 8152
 argus::pdp_port: 8152
 argus::pdp_admin_port: 8153
 argus::pdp_server: "%{::fqdn}"
+argus::pdp_retention_interval: 240
 
 # pap parameters
 argus::pap_port: 8150
