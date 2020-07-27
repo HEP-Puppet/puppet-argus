@@ -1,14 +1,20 @@
 # PAP service access control
 # 
 # Documentation: https://twiki.cern.ch/twiki/bin/view/EGEE/AuthZPAPConfig
-# 
+#
+# file managed by puppet, do not edit manually
+#
+
 [dn]
-"<%=pap_admin_dn%>" : ALL
-"<%=pap_host_dn%>" : ALL
-"<%=pap_service_dn%>" : ALL
-<%pap_auth.each do |rule| -%>
-<%=rule%>
+<% scope['argus::pap_admin_dn'].sort.each do |dn| -%>
+"<%= dn -%>" : ALL
+<% end-%>
+"<%= scope['argus::pap_host_dn']%>" : ALL
+"<%= scope['argus::pap_service_dn']%>" : ALL
+<% scope['argus::pap_auth'].sort.each do |policy,dn_a| -%>
+  <%- dn_a.sort.each do |dn| -%>
+"<%= dn -%>" : <%= policy %>
+  <%- end %>
 <%end-%>
+
 [fqan]
-
-

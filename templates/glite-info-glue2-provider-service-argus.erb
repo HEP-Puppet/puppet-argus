@@ -1,8 +1,11 @@
 #!/bin/sh
+#
+# file managed by puppet, do not edit manually
+#
 
 ##
 # Argus services GLUE 2 info provider
 ##
 
-/usr/bin/glite-info-glue2-multi /etc/glite/info/service/glite-info-glue2-argus-pap.conf,/etc/glite/info/service/glite-info-glue2-argus-pdp.conf,/etc/glite/info/service/glite-info-glue2-argus-pep.conf <%=sitename%> /etc/glite/info/service/glite-info-glue2-service-argus.conf
+/usr/bin/glite-info-glue2-multi /etc/argus/info-glue2/glite-info-glue2-argus-pap.conf,/etc/argus/info-glue2/glite-info-glue2-argus-pdp.conf,/etc/argus/info-glue2/glite-info-glue2-argus-pep.conf <%= scope['argus::sitename']%> /etc/argus/info-glue2/glite-info-glue2-service-argus.conf
 

@@ -1,0 +1,17 @@
+{"name": "heppuppet-argus",
+  "author": "schwicke",
+  "description": "This modules provides classes and definitions required to setup an Argus server instance.",
+  "license": "Apache License, Version 2.0 (the \"License\")",
+  "project_page": "http://www.eu-emi.eu/",
+  "source": "",
+  "summary": "EMI Argus service", "version": "0.0.1",
+  "dependencies": [
+    {"name": "puppetlabs/stdlib", "version_requirement": ">=4.1.0"},
+    {"name": "puppetlabs/concat", "version_requirement": ">=1.2.5"},
+    {"name": "puppetlabs/firewall", "version_requirement": ">=0.3.1"},
+    {"name": "CERNOps/vosupport", "version_requirement": ">=0.0.1"},
+    {"name": "pdxcat/autofs", "version_requirement": ">=0.0.2"},
+    {"name":"puppet/fetchcrl", "version_requirement":">= 1.1.1"},
+    {"name":"stahnma-epel", "version_requirement":">= 1.2.2"}
+  ]
+}

@@ -1,0 +1,2 @@
+yum install emi-argus --enablerepo=EMI-3-base,EMI-3-updates,epel,EMI-3-third-party
+43 packages, including yaim-argus_server
