@@ -9,5 +9,5 @@ class argus::lemon {
   lemon::metric{'33309':}
   lemon::metric{'33310':}
   lemon::metric{'33311':}
-  
+
 }

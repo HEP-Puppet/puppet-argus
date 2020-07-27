@@ -1,27 +1,22 @@
-/**
- * Requirements :
- * - a certificate MUST be installed using puppet in /etc/grid-security/hostcert.pem (hostkey.pem)
- * - the UMD4 repositories MUST be present
- *
- * The PAP rules are specified in a hash this way :
- *
-argus::pap_rules:
-  action:
-    attribute:
-      list of DNs
-
-for instance (the included quotes are required for the policy to be correctly added ) :
-  deny:
-    subject-issuer:
-      - "'CN=bad guys'"
-
-will create a rule :
-rule deny { subject-issuer = 'CN=bad guys' }
-
- */
+# Requirements :
+# - a certificate MUST be installed using puppet in /etc/grid-security/hostcert.pem (hostkey.pem)
+# - the UMD4 repositories MUST be present
+# 
+# The PAP rules are specified in a hash this way :
+# 
+# argus::pap_rules:
+# action:
+# attribute:
+# list of DNs
+# 
+# for instance (the included quotes are required for the policy to be correctly added ) :
+# deny:
+# subject-issuer:
+# - "'CN=bad guys'"
+# 
+# will create a rule :
+# rule deny { subject-issuer = 'CN=bad guys' }
 class argus (
-  $open_firewall = false,
-
   #the argus pap server used by pdp
   $pap_server,
   #the argus pdp server used by pep
@@ -34,8 +29,6 @@ class argus (
 
   #this will setup the voms related things :
   $supported_vos,
-  #this will create argus "permit" rules for those VOs if true
-  $supported_vos_allowed = true,
 
   # site name is required
   $sitename,
@@ -46,20 +39,16 @@ class argus (
   # pep params
   $pepd_port,
   $pepd_admin_port,
-  $pepd_pass = randompass(),
 
   # pdp params
   $pdps_port,
   $pdp_port,
   $pdp_admin_port,
-  $pdp_pass = randompass(),
   $pdp_retention_interval,
 
   # pap parameters
   $pap_port,
   $pap_shutdown_port,
-  $pap_shutdown_command = randompass(),
-
 
   # central banning setup
   $centralbanning_dn,
@@ -67,18 +56,30 @@ class argus (
   $centralbanning_port,
   $centralbanning_public,
   $poll_interval,
+  #files
+  $grid_mapfile,
+  $grid_mapdir,
+  $group_mapfile,
+
+  $open_firewall = false,
+  #this will create argus "permit" rules for those VOs if true
+  $supported_vos_allowed = true,
+
+  $pepd_pass = randompass(),
+  $pdp_pass = randompass(),
+  $pap_shutdown_command = randompass(),
 
   $service_name      = $::fqdn ,
 
   #following must be changed.
 
   $pap_admin_dn      = undef , #this must be an *ARRAY* as there can be many admins.
-  $site_base_dn      = "/O=GRID/C=FR_EN_UK/O=my CA/CN" , #a = will be apended to this when needed.
+  $site_base_dn      = '/O=GRID/C=FR_EN_UK/O=my CA/CN' , #a = will be apended to this when needed.
 
 
-  $nfspath           = "" ,
-  $nfsmountoptions   = "" ,
-  $mountpoint        = "" ,
+  $nfspath           = '' ,
+  $nfsmountoptions   = '' ,
+  $mountpoint        = '' ,
 
   # additional rules for pap authorization. Used for creating a NGI or central pap.
   # example :
@@ -108,17 +109,10 @@ class argus (
   # ...
 
   $pap_rules         = {},
-
-  #files
-  $grid_mapfile,
-  $grid_mapdir,
-  $group_mapfile,
-
-
   ) {
 
   $pap_service_dn    = "${site_base_dn}=${service_name}"
-  $pap_host_dn       = "${site_base_dn}=$::fqdn"
+  $pap_host_dn       = "${site_base_dn}=${::fqdn}"
 
   case $::osfamily {
     'RedHat' :   {

@@ -1,5 +1,5 @@
 name 'heppuppet-argus'
-version '0.0.1'
+version '1.0.0'
 
 author 'schwicke'
 license 'Apache License, Version 2.0 (the "License")'
