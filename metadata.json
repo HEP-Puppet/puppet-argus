@@ -4,8 +4,9 @@
   "author": "schwicke",
   "summary": "EMI Argus service",
   "license": "Apache License, Version 2.0 (the \"License\")",
-  "source": "",
+  "source": "https://github.com/HEP-Puppet/puppet-argus",
   "project_page": "http://www.eu-emi.eu/",
+  "issues_url": "https://github.com/HEP-Puppet/puppet-argus/issues",
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
