@@ -17,8 +17,6 @@
 # will create a rule :
 # rule deny { subject-issuer = 'CN=bad guys' }
 class argus (
-  $open_firewall = false,
-
   #the argus pap server used by pdp
   $pap_server,
   #the argus pdp server used by pep
@@ -31,8 +29,6 @@ class argus (
 
   #this will setup the voms related things :
   $supported_vos,
-  #this will create argus "permit" rules for those VOs if true
-  $supported_vos_allowed = true,
 
   # site name is required
   $sitename,
@@ -43,20 +39,16 @@ class argus (
   # pep params
   $pepd_port,
   $pepd_admin_port,
-  $pepd_pass = randompass(),
 
   # pdp params
   $pdps_port,
   $pdp_port,
   $pdp_admin_port,
-  $pdp_pass = randompass(),
   $pdp_retention_interval,
 
   # pap parameters
   $pap_port,
   $pap_shutdown_port,
-  $pap_shutdown_command = randompass(),
-
 
   # central banning setup
   $centralbanning_dn,
@@ -64,6 +56,18 @@ class argus (
   $centralbanning_port,
   $centralbanning_public,
   $poll_interval,
+  #files
+  $grid_mapfile,
+  $grid_mapdir,
+  $group_mapfile,
+
+  $open_firewall = false,
+  #this will create argus "permit" rules for those VOs if true
+  $supported_vos_allowed = true,
+
+  $pepd_pass = randompass(),
+  $pdp_pass = randompass(),
+  $pap_shutdown_command = randompass(),
 
   $service_name      = $::fqdn ,
 
@@ -105,13 +109,6 @@ class argus (
   # ...
 
   $pap_rules         = {},
-
-  #files
-  $grid_mapfile,
-  $grid_mapdir,
-  $group_mapfile,
-
-
   ) {
 
   $pap_service_dn    = "${site_base_dn}=${service_name}"
