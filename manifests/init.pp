@@ -1,24 +1,21 @@
-/**
- * Requirements :
- * - a certificate MUST be installed using puppet in /etc/grid-security/hostcert.pem (hostkey.pem)
- * - the UMD4 repositories MUST be present
- *
- * The PAP rules are specified in a hash this way :
- *
-argus::pap_rules:
-  action:
-    attribute:
-      list of DNs
-
-for instance (the included quotes are required for the policy to be correctly added ) :
-  deny:
-    subject-issuer:
-      - "'CN=bad guys'"
-
-will create a rule :
-rule deny { subject-issuer = 'CN=bad guys' }
-
- */
+# Requirements :
+# - a certificate MUST be installed using puppet in /etc/grid-security/hostcert.pem (hostkey.pem)
+# - the UMD4 repositories MUST be present
+# 
+# The PAP rules are specified in a hash this way :
+# 
+# argus::pap_rules:
+# action:
+# attribute:
+# list of DNs
+# 
+# for instance (the included quotes are required for the policy to be correctly added ) :
+# deny:
+# subject-issuer:
+# - "'CN=bad guys'"
+# 
+# will create a rule :
+# rule deny { subject-issuer = 'CN=bad guys' }
 class argus (
   $open_firewall = false,
 
@@ -73,12 +70,12 @@ class argus (
   #following must be changed.
 
   $pap_admin_dn      = undef , #this must be an *ARRAY* as there can be many admins.
-  $site_base_dn      = "/O=GRID/C=FR_EN_UK/O=my CA/CN" , #a = will be apended to this when needed.
+  $site_base_dn      = '/O=GRID/C=FR_EN_UK/O=my CA/CN' , #a = will be apended to this when needed.
 
 
-  $nfspath           = "" ,
-  $nfsmountoptions   = "" ,
-  $mountpoint        = "" ,
+  $nfspath           = '' ,
+  $nfsmountoptions   = '' ,
+  $mountpoint        = '' ,
 
   # additional rules for pap authorization. Used for creating a NGI or central pap.
   # example :
@@ -118,7 +115,7 @@ class argus (
   ) {
 
   $pap_service_dn    = "${site_base_dn}=${service_name}"
-  $pap_host_dn       = "${site_base_dn}=$::fqdn"
+  $pap_host_dn       = "${site_base_dn}=${::fqdn}"
 
   case $::osfamily {
     'RedHat' :   {
