@@ -86,14 +86,14 @@ class argus::config {
 
   include 'argus::centralbanning'
 
-
-
-
   #pepd service must be restarted when the gridmap files change
+  $grid_mapfile = $::argus::grid_mapfile
+  $group_mapfile = $::argus::group_mapfile
+
   File[
-    '/etc/grid-security/grid-mapfile',
+    $grid_mapfile,
     '/etc/grid-security/voms-grid-mapfile',
-    '/etc/grid-security/groupmapfile'
+    $group_mapfile
   ]~>Service['argus-pepd']
 
   File[
